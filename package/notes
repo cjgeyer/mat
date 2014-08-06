@@ -1,0 +1,2 @@
+\rm -f mat/src/*.{o,so}
+R CMD check mat

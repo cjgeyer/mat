@@ -1,0 +1,47 @@
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(mat)
+> 
+> a <- matrix(1:12, 3, 4)
+> b <- matrix(1:20, 4, 5)
+> x <- 1:4
+> 
+> all.equal(matvecmult(a, x), as.vector(a %*% cbind(x)))
+[1] TRUE
+> all.equal(matmatmult(a, b), a %*% b)
+[1] TRUE
+> 
+> n <- 20
+> p <- 5
+> x <- matrix(rnorm(n * p), nrow = n)
+> a <- t(x) %*% x
+> b <- rnorm(p)
+> 
+> all.equal(matinv(a), solve(a))
+[1] TRUE
+> all.equal(matdet(a), det(a))
+[1] TRUE
+> all.equal(matsolve(a, b), solve(a, b))
+[1] TRUE
+> all.equal(matsmash(a, b), as.vector(rbind(b) %*% solve(a) %*% cbind(b)))
+[1] TRUE
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  0.244   0.032   0.268 

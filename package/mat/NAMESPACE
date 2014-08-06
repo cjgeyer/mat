@@ -1,0 +1,10 @@
+
+useDynLib(mat)
+
+export(matvecmult)
+export(matmatmult)
+export(matinv)
+export(matdet)
+export(matsolve)
+export(matsmash)
+
