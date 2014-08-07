@@ -64,3 +64,30 @@ C everything is a pointer).  That is one thing our examples show.  The
 other is how to call FORTRAN from C, and [Section 6.6 of the book *Writing R Extensions](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Calling-C-from-FORTRAN-and-vice-versa) explains this.  It is another thing
 our examples show.
 
+One caution about the examples: the function `matinv` in the file
+[`i.c`](package/mat/src/i.c) calculates the inverse of a square, positive
+definite matrix.  But you should [almost never want to calculate a matrix
+inverse](http://www.johndcook.com/blog/2010/01/19/dont-invert-that-matrix/).
+If you are going to multiply the inverse by another vector, then you should
+instead think of this problem as solving linear equations.
+
+Suppose you want to calculate <var>A</var><sup>&minus;1</sup> <var>b</var>.
+What you should actually do is solve the linear equations <var>A x = b</var>
+for <var>x</var>.  This will be not only faster but also more computationally
+stable.
+
+Suppose you want to calculate <var>A</var><sup>&minus;1</sup> <var>B</var>,
+where now <var>A</var> and </var>B</var> are both matrices.  What you should
+actually do is factor <var>A</var> once and then solve <var>A x = b</var> for
+<var>b</var> being each of the columns of <var>B</var> (giving the columns
+of the result).
+
+As an example of this, `matsmash` (I didn't know what to call it) in the file
+[`i.c`](package/mat/src/i.c) calculates <var>x</var>
+<var>A</var><sup>&minus;1</sup> <var>x</var> without doing explicit matrix
+inversion.
+
+The only place I can think of where you really need matrix inversion is
+calculating the inverse Fisher information matrix (because you don't
+use this in further matrix multiplications).
+
