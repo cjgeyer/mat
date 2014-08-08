@@ -28,8 +28,11 @@ matsolve <- function(a, b)
     stopifnot(is.finite(b))
     stopifnot(is.matrix(a))
     stopifnot(a == t(a))
-    stopifnot(nrow(a) == length(b))
-    .C("matsolve", a = as.double(a), n = nrow(a), b = as.double(b),
+    b <- as.matrix(b)
+    stopifnot(nrow(a) == nrow(b))
+    storage.mode(a) <- "double"
+    storage.mode(b) <- "double"
+    .C("matsolve", a = a, b = b, nrowb = nrow(b), ncolb = ncol(b),
         PACKAGE = "mat")$b
 }
 

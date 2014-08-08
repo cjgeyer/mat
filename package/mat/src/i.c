@@ -45,14 +45,13 @@ void matdet(double *a, int *n, double *result)
 // Solves A x = b with the solution x clobbering b (LAPACK)
 // first call DPOTRF and then DPOTRS
 
-void matsolve(double *a, int *n, double *b)
+void matsolve(double *a, double *b, int *nrowb, int *ncolb)
 {
     int info;
-    int ione = 1;
-    F77_CALL(dpotrf)("L", n, a, n, &info);
+    F77_CALL(dpotrf)("L", nrowb, a, nrowb, &info);
     if (info != 0)
         error("Cholesky decomposition failed");
-    F77_CALL(dpotrs)("L", n, &ione, a, n, b, n, &info);
+    F77_CALL(dpotrs)("L", nrowb, ncolb, a, nrowb, b, nrowb, &info);
     if (info != 0)
         error("solution failed");
 }

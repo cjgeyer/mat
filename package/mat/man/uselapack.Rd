@@ -15,7 +15,7 @@
 }
 \arguments{
   \item{a}{a square positive definite matrix.}
-  \item{b}{a vector of dimension \code{ncol(a)}.}
+  \item{b}{a matrix having the same number of rows as \code{a}.}
   \item{x}{a vector of dimension \code{ncol(a)}.}
 }
 \details{

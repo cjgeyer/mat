@@ -11,7 +11,7 @@
 }
 \arguments{
   \item{a}{a matrix.}
-  \item{b}{another matrix.}
+  \item{b}{another matrix such that \code{ncol(a) == nrow(b)}.}
   \item{x}{a vector of dimension \code{ncol(a)}.}
 }
 \value{
