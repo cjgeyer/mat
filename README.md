@@ -58,11 +58,16 @@ to call it.  For this you read the comments in the FORTRAN source code in
 of the R sources (so for this you need to have unpacked an R source tarball
 or to read the sources online).
 
-The final thing you need to know if you don't know FORTRAN is that all
-variables in FORTRAN are passed by reference (meaning when called from
-C everything is a pointer).  That is one thing our examples show.  The
-other is how to call FORTRAN from C, and [Section 6.6 of the book *Writing R Extensions](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Calling-C-from-FORTRAN-and-vice-versa) explains this.  It is another thing
-our examples show.
+The final things you need to know if you don't know FORTRAN are
+
+ * a FORTRAN function `foo` called from C must be wrapped with a macro `F77_CALL(foo)`, see [Section 6.6 of the book *Writing R Extensions*](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Calling-C-from-FORTRAN-and-vice-versa),
+ * all variables in FORTRAN are passed by reference (meaning when called from
+   C everything is a pointer),
+ * R like FORTRAN stores matrices in columnwise order (first index changes the
+   the fastest) and similarly for higher-dimensional arrays, see
+   [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).
+   
+Our examples illustrate all of these.
 
 One caution about the examples: the function `matinv` in the file
 [`i.c`](package/mat/src/i.c) calculates the inverse of a square, positive
@@ -78,9 +83,9 @@ stable.
 
 Suppose you want to calculate <var>A</var><sup>&minus;1</sup> <var>B</var>,
 where now <var>A</var> and </var>B</var> are both matrices.  What you should
-actually do is factor <var>A</var> once and then solve <var>A x = b</var> for
-<var>b</var> being each of the columns of <var>B</var> (giving the columns
-of the result).
+actually do is still think of this as solving linear equations, now <var>A X = B</var>, where now <var>X</var> and <var>B</var> are both matrices.
+(Since version 0.2 of this package, the function `matsolve` in
+[`i.c`](package/mat/src/i.c) illustrates this.)
 
 As an example of this, `matsmash` (I didn't know what to call it) in the file
 [`i.c`](package/mat/src/i.c) calculates <var>x</var>
