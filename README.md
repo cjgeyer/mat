@@ -65,7 +65,7 @@ The final things you need to know if you don't know FORTRAN are
    C everything is a pointer),
  * R like FORTRAN stores matrices in columnwise order (first index changes the
    the fastest) and similarly for higher-dimensional arrays, see
-   [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).  This means (assuming you keep the matrices in the same storage order that R and FORTRAN have in your C code) you can pass the matrices direct to BLAS or LAPACK code without reordering them).
+   [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).  This means (assuming you keep the matrices in the same storage order that R and FORTRAN have in your C code) you can pass the matrices direct to BLAS or LAPACK code without reordering them.
    
 Our examples illustrate all of these.
 
