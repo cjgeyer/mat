@@ -6,7 +6,7 @@ about how to call
 algebra in C code called from [R](http://www.r-project.org).
 
 It is just a demo, it doesn't show how to use all BLAS and LINPACK routines
-only a few of them (but if you can figure out how to call one, then you
+(only a few of them, but if you can figure out how to call one, then you
 can figure out how to call the rest).
 
 Thus all the interesting stuff in this package is in the `src` directory of
@@ -65,7 +65,7 @@ The final things you need to know if you don't know FORTRAN are
    C everything is a pointer),
  * R like FORTRAN stores matrices in columnwise order (first index changes the
    the fastest) and similarly for higher-dimensional arrays, see
-   [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).
+   [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).  This means (assuming you keep the matrices in the same storage order that R and FORTRAN have in your C code) you can pass the matrices direct to BLAS or LAPACK code without reordering them).
    
 Our examples illustrate all of these.
 
