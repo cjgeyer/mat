@@ -88,7 +88,7 @@ actually do is still think of this as solving linear equations, now <var>A X = B
 [`i.c`](package/mat/src/i.c) illustrates this.)
 
 As an example of this, `matsmash` (I didn't know what to call it) in the file
-[`i.c`](package/mat/src/i.c) calculates <var>x</var>
+[`i.c`](package/mat/src/i.c) calculates <var>x<sup>T</sup></var>
 <var>A</var><sup>&minus;1</sup> <var>x</var> without doing explicit matrix
 inversion.
 
