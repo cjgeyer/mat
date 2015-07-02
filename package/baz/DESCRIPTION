@@ -1,6 +1,6 @@
-Package: mat
-Version: 0.2-1
-Date: 2015-02-10
+Package: baz
+Version: 0.2-2
+Date: 2015-07-01
 Title: Demo Calling BLAS or LAPACK from C Called from R
 Author: Charles J. Geyer <charlie@stat.umn.edu>
 Maintainer: Charles J. Geyer <charlie@stat.umn.edu>

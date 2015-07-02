@@ -9,7 +9,7 @@ matvecmult <- function(a, x)
     stopifnot(ncol(a) == length(x))
     .C("matvecmult", a = as.double(a), x = as.double(x),
         nrow = nrow(a), ncol = ncol(a), result = double(nrow(a)),
-        PACKAGE = "mat")$result
+        PACKAGE = "baz")$result
 }
 
 matmatmult <- function(a, b)
@@ -24,6 +24,6 @@ matmatmult <- function(a, b)
     .C("matmatmult", a = as.double(a), b = as.double(b),
         nrowa = nrow(a), ncola = ncol(a), ncolb = ncol(b),
         c = matrix(as.double(0), nrow = nrow(a), ncol = ncol(b)),
-        PACKAGE = "mat")$c
+        PACKAGE = "baz")$c
 }
 

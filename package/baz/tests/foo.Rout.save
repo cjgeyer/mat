@@ -15,7 +15,7 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> library(mat)
+> library(baz)
 > 
 > a <- matrix(1:12, 3, 4)
 > b <- matrix(1:20, 4, 5)

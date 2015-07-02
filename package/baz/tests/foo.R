@@ -1,4 +1,4 @@
-library(mat)
+library(baz)
 
 a <- matrix(1:12, 3, 4)
 b <- matrix(1:20, 4, 5)

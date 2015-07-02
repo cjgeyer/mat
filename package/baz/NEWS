@@ -1,0 +1,15 @@
+
+CHANGES IN baz 0.2-2:
+
+ * Changed name of package from mat to baz to avoid CRAN conflict.
+   Don't plan to put package on CRAN but want to pass R CMD check --as-cran
+   because it checks more stuff
+
+CHANGES IN mat 0.2-1:
+
+ * minor changes in README and DESCRIPTION
+
+CHANGES IN mat 0.2:
+
+ * matsolve now allows matrix rather than vector right-hand side
+

@@ -7,7 +7,7 @@ matinv <- function(a)
     stopifnot(a == t(a))
     .C("matinv", a = a, n = nrow(a),
         result = matrix(as.double(0), nrow(a), ncol(a)),
-        PACKAGE = "mat")$result
+        PACKAGE = "baz")$result
 }
 
 matdet <- function(a)
@@ -17,7 +17,7 @@ matdet <- function(a)
     stopifnot(is.matrix(a))
     stopifnot(a == t(a))
     .C("matdet", a = a, n = nrow(a), result = double(1),
-        PACKAGE = "mat")$result
+        PACKAGE = "baz")$result
 }
 
 matsolve <- function(a, b)
@@ -33,7 +33,7 @@ matsolve <- function(a, b)
     storage.mode(a) <- "double"
     storage.mode(b) <- "double"
     .C("matsolve", a = a, b = b, nrowb = nrow(b), ncolb = ncol(b),
-        PACKAGE = "mat")$b
+        PACKAGE = "baz")$b
 }
 
 matsmash <- function(a, x)
@@ -46,6 +46,6 @@ matsmash <- function(a, x)
     stopifnot(a == t(a))
     stopifnot(nrow(a) == length(x))
     .C("matsmash", a = as.double(a), n = nrow(a), x = as.double(x),
-        result = double(1), PACKAGE = "mat")$result
+        result = double(1), PACKAGE = "baz")$result
 }
 

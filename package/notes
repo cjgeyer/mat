@@ -1,10 +1,10 @@
 # do once (cannot put this in Makevars because R CMD check complains)
 export PKG_CFLAGS="-W -Wall -Wextra"
 # do every time
-\rm -f mat/src/*.{o,so}
-R CMD check mat
+\rm -f baz/src/*.{o,so}
+R CMD check baz
 # do at least once before shipping
-# both mat.Rcheck/mat-Ex.Rout and mat.Rcheck/tests/*.Rout should have
+# both baz.Rcheck/baz-Ex.Rout and baz.Rcheck/tests/*.Rout should have
 #     no complaints from valgrind
-\rm -f mat/src/*.{o,so}
-R CMD check --use-valgrind mat
+\rm -f baz/src/*.{o,so}
+R CMD check --use-valgrind baz
