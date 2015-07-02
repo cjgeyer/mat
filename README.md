@@ -21,7 +21,7 @@ the package, which contains the files
  * [`i.c`](package/baz/src/i.c) LAPACK examples (also more BLAS)
  * [`Makevars`](package/baz/src/Makevars) which sets `PKG_LDFLAGS`
 
-Everything else is just junk that surrounds this with a R package so it
+Everything else is just junk that surrounds this with an R package so it
 can get exercised.  The examples in the help pages and in the `tests`
 directory of the package show that the code works.  If the package is built
 with
@@ -41,7 +41,7 @@ to see where it is now.  Then read the users guide at
 which routines do what.
 
 Then look at the R sources for which routines are included in R and are part
-of the R public API.  They are if they are found in the include files
+of the R public API.  They are found in the include files
 
  * [`R_ext/BLAS.h`](https://svn.r-project.org/R/trunk/src/include/R_ext/BLAS.h)
  * [`R_ext/Lapack.h`](https://svn.r-project.org/R/trunk/src/include/R_ext/Lapack.h)
