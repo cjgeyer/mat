@@ -5,6 +5,11 @@ about how to call
 [LAPACK](http://en.wikipedia.org/wiki/LAPACK) routines to do numerical linear
 algebra in C code called from [R](http://www.r-project.org).
 
+The name of the git repo is different from the name of the R package because
+the package used to be called mat and was renamed baz to avoid a conflict
+with CRAN, not that we intend to put the package on CRAN but
+`R CMD check --as-cran` does more checks, so we want to pass that too.
+
 It is just a demo, it doesn't show how to use all BLAS and LINPACK routines
 (only a few of them, but if you can figure out how to call one, then you
 can figure out how to call the rest).
@@ -12,16 +17,16 @@ can figure out how to call the rest).
 Thus all the interesting stuff in this package is in the `src` directory of
 the package, which contains the files
 
- * [`m.c`](package/mat/src/m.c) BLAS examples
- * [`i.c`](package/mat/src/i.c) LAPACK examples (also more BLAS)
- * [`Makevars`](package/mat/src/Makevars) which sets `PKG_LDFLAGS`
+ * [`m.c`](package/baz/src/m.c) BLAS examples
+ * [`i.c`](package/baz/src/i.c) LAPACK examples (also more BLAS)
+ * [`Makevars`](package/baz/src/Makevars) which sets `PKG_LDFLAGS`
 
 Everything else is just junk that surrounds this with a R package so it
 can get exercised.  The examples in the help pages and in the `tests`
 directory of the package show that the code works.  If the package is built
 with
 
-    R CMD check --use-valgrind mat
+    R CMD check --use-valgrind baz
 
 [valgrind](http://valgrind.org/) does not complain.
 
@@ -70,7 +75,7 @@ The final things you need to know if you don't know FORTRAN are
 Our examples illustrate all of these.
 
 One caution about the examples: the function `matinv` in the file
-[`i.c`](package/mat/src/i.c) calculates the inverse of a square, positive
+[`i.c`](package/baz/src/i.c) calculates the inverse of a square, positive
 definite matrix.  But you should [almost never want to calculate a matrix
 inverse](http://www.johndcook.com/blog/2010/01/19/dont-invert-that-matrix/).
 If you are going to multiply the inverse by another vector, then you should
@@ -85,10 +90,10 @@ Suppose you want to calculate <var>A</var><sup>&minus;1</sup> <var>B</var>,
 where now <var>A</var> and </var>B</var> are both matrices.  What you should
 actually do is still think of this as solving linear equations, now <var>A X = B</var>, where now <var>X</var> and <var>B</var> are both matrices.
 (Since version 0.2 of this package, the function `matsolve` in
-[`i.c`](package/mat/src/i.c) illustrates this.)
+[`i.c`](package/baz/src/i.c) illustrates this.)
 
 As an example of this, `matsmash` (I didn't know what to call it) in the file
-[`i.c`](package/mat/src/i.c) calculates <var>x<sup>T</sup></var>
+[`i.c`](package/baz/src/i.c) calculates <var>x<sup>T</sup></var>
 <var>A</var><sup>&minus;1</sup> <var>x</var> without doing explicit matrix
 inversion.
 
