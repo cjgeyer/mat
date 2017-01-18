@@ -19,7 +19,7 @@ the package, which contains the files
 
  * [`m.c`](package/baz/src/m.c) BLAS examples
  * [`i.c`](package/baz/src/i.c) LAPACK examples (also more BLAS)
- * [`Makevars`](package/baz/src/Makevars) which sets `PKG_LDFLAGS`
+ * [`Makevars`](package/baz/src/Makevars) which sets `PKG_LIBS`
 
 Everything else is just junk that surrounds this with an R package so it
 can get exercised.  The examples in the help pages and in the `tests`
@@ -34,9 +34,10 @@ To call some other BLAS or LAPACK routines, first you have to figure out
 which ones.  The main [BLAS web site](http://www.netlib.org/blas/) has a
 quick reference card, but it is in PostScript rather than PDF so you need
 a PostScript viewer to read it.  As I write this, the version of LAPACK
-included in the R sources is 3.5.0.  Check the `NEWS` file in the `doc`
+included in the R sources is 3.6.1.  Check the `NEWS` file in the `doc`
 directory of the R source tarball or at http://cran.r-project.org/src/base/NEWS
-to see where it is now.  Then read the users guide at
+to see where it is now.  Alternatively, `news()` at the R command line
+gets this.  Then read the users guide at
 [LAPACK web site](http://www.netlib.org/lapack/#_manpages) to find out
 which routines do what.
 
