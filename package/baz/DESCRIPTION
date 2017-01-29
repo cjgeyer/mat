@@ -1,10 +1,10 @@
 Package: baz
-Version: 0.2-2
-Date: 2015-07-01
+Version: 0.3
+Date: 2017-01-29
 Title: Demo Calling BLAS or LAPACK from C Called from R
 Author: Charles J. Geyer <charlie@stat.umn.edu>
 Maintainer: Charles J. Geyer <charlie@stat.umn.edu>
 Depends: R (>= 2.10.0)
 Description: This is a demo package for statistical computing courses
   that illustrates matrix operations using BLAS or LAPACK in C called from R.
-License: Unlimited
+License: CC0
