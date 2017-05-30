@@ -66,7 +66,7 @@ or to read the sources online).
 
 The final things you need to know if you don't know FORTRAN are
 
- * a FORTRAN function `foo` called from C must be wrapped with a macro `F77_CALL(foo)`, see [Section 6.6 of the book *Writing R Extensions*](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Calling-C-from-FORTRAN-and-vice-versa),
+ * a FORTRAN subroutine `foo` called from C must be wrapped with a macro `F77_CALL(foo)`, see [Section 6.6 of the book *Writing R Extensions*](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Calling-C-from-FORTRAN-and-vice-versa),
  * all variables in FORTRAN are passed by reference (meaning when called from
    C everything is a pointer),
  * R like FORTRAN stores matrices in columnwise order (first index changes the
