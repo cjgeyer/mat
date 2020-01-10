@@ -1,10 +1,14 @@
-# do once (cannot put this in Makevars because R CMD check complains)
+# if any version numbers have changed
+rm -f baz*.tar.gz
+
+# the following works to turn on extra compiler flags for checking package baz
 export PKG_CFLAGS="-W -Wall -Wextra"
-# do every time
-\rm -f baz/src/*.{o,so}
-R CMD check baz
-# do at least once before shipping
-# both baz.Rcheck/baz-Ex.Rout and baz.Rcheck/tests/*.Rout should have
-#     no complaints from valgrind
-\rm -f baz/src/*.{o,so}
-R CMD check --use-valgrind baz
+
+R CMD build baz
+R CMD check baz_*.tar.gz
+
+# if changes to C or Fortran code are made
+
+R CMD check baz_*.tar.gz --use-valgrind
+R CMD check baz_*.tar.gz --use-gct
+
