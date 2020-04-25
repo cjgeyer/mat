@@ -23,12 +23,16 @@ the package, which contains the files
 
 Everything else is just junk that surrounds this with an R package so it
 can get exercised.  The examples in the help pages and in the `tests`
-directory of the package show that the code works.  If the package is built
+directory of the package show that the code works.  If the package is checked
 with
 
-    R CMD check --use-valgrind baz
+    R CMD check baz_*.tar.gz --use-valgrind
 
-[valgrind](http://valgrind.org/) does not complain.
+[valgrind](http://valgrind.org/) does not complain.  (Actually, by default,
+it complains a lot, but all of the complaints are about C function `wcsrtombs`,
+which is not in our code, not even in the code of R, but in the C standard
+library.  The file `package/notes` shows how to suppress these complaints,
+which are not about our code.)
 
 To call some other BLAS or LAPACK routines, first you have to figure out
 which ones.  The main [BLAS web site](http://www.netlib.org/blas/) has a
@@ -101,4 +105,14 @@ inversion.
 The only place I can think of where you really need matrix inversion is
 calculating the inverse Fisher information matrix (because you don't
 use this in further matrix multiplications).
+
+This package when checked with
+
+    R CMD check baz_*.tar.gz --as-cran
+
+generates complaints about registration of native routines.
+If we actually wanted to make this a CRAN package (which of course we
+don't because it is just a demo), we would need to do that.
+See R package `fooRegister` in Github repo `foo`
+(https://github.com/cjgeyer/foo) for how to do that.
 

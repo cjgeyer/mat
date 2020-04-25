@@ -12,3 +12,13 @@ R CMD check baz_*.tar.gz
 R CMD check baz_*.tar.gz --use-valgrind
 R CMD check baz_*.tar.gz --use-gct
 
+# but valgrind now complains a lot about C standard library (oof!)
+# so need to suppress those complaints
+# new file myValgrind.supp does that
+export VALGRIND_OPTS=--suppressions=`pwd`/myValgrind.supp
+R CMD check baz_*.tar.gz --use-valgrind
+grep "ERROR SUMMARY" baz.Rcheck/00check.log
+grep "ERROR SUMMARY" baz.Rcheck/baz-Ex.Rout
+grep "definitely lost:" baz.Rcheck/00check.log
+grep "definitely lost:" baz.Rcheck/baz-Ex.Rout
+
