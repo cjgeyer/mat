@@ -31,7 +31,8 @@ with
 [valgrind](http://valgrind.org/) does not complain.  (Actually, by default,
 it complains a lot, but all of the complaints are about C function `wcsrtombs`,
 which is not in our code, not even in the code of R, but in the C standard
-library.  The file `package/notes` shows how to suppress these complaints,
+library.  The file [`package/notes`](package/notes)
+shows how to suppress these complaints,
 which are not about our code.)
 
 To call some other BLAS or LAPACK routines, first you have to figure out
