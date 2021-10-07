@@ -1,6 +1,12 @@
+// See section 6.6.1 of Writing R Extensions (Fortran character strings)
+#define USE_FC_LEN_T
 
 #include <R.h>
 #include <R_ext/Lapack.h>
+
+#ifndef FCONE
+# define FCONE
+#endif
 
 // matrix inverse using cholesky (LAPACK)
 // first call DPOTRF and then DPOTRI
@@ -8,10 +14,10 @@
 void matinv(double *a, int *n, double *result)
 {
     int info;
-    F77_CALL(dpotrf)("L", n, a, n, &info);
+    F77_CALL(dpotrf)("L", n, a, n, &info FCONE);
     if (info != 0)
         error("Cholesky decomposition failed");
-    F77_CALL(dpotri)("L", n, a, n, &info);
+    F77_CALL(dpotri)("L", n, a, n, &info FCONE);
     if (info != 0)
         error("inverse computation failed");
     // but we still only have the lower triangle of the result in a
@@ -32,7 +38,7 @@ void matinv(double *a, int *n, double *result)
 void matdet(double *a, int *n, double *result)
 {
     int info;
-    F77_CALL(dpotrf)("L", n, a, n, &info);
+    F77_CALL(dpotrf)("L", n, a, n, &info FCONE);
     if (info != 0)
         error("Cholesky decomposition failed");
     int in = n[0];
@@ -48,10 +54,10 @@ void matdet(double *a, int *n, double *result)
 void matsolve(double *a, double *b, int *nrowb, int *ncolb)
 {
     int info;
-    F77_CALL(dpotrf)("L", nrowb, a, nrowb, &info);
+    F77_CALL(dpotrf)("L", nrowb, a, nrowb, &info FCONE);
     if (info != 0)
         error("Cholesky decomposition failed");
-    F77_CALL(dpotrs)("L", nrowb, ncolb, a, nrowb, b, nrowb, &info);
+    F77_CALL(dpotrs)("L", nrowb, ncolb, a, nrowb, b, nrowb, &info FCONE);
     if (info != 0)
         error("solution failed");
 }
@@ -64,11 +70,11 @@ void matsmash(double *a, int *n, double *x, double *result)
     int info;
     int ione = 1;
     double *savex = (double *) R_alloc(n[0], sizeof(double));
-    F77_CALL(dpotrf)("L", n, a, n, &info);
+    F77_CALL(dpotrf)("L", n, a, n, &info FCONE);
     if (info != 0)
         error("Cholesky decomposition failed");
     F77_CALL(dcopy)(n, x, &ione, savex, &ione);
-    F77_CALL(dpotrs)("L", n, &ione, a, n, x, n, &info);
+    F77_CALL(dpotrs)("L", n, &ione, a, n, x, n, &info FCONE);
     if (info != 0)
         error("solution failed");
     result[0] = F77_CALL(ddot)(n, x, &ione, savex, &ione);

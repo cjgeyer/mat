@@ -1,4 +1,10 @@
 
+CHANGES IN baz 0.4:
+
+ * Changed C code calling Fortran (Lapack/BLAS) in accordance with
+   Section 6.6.1 of Writing R Extensions.  This also requires
+   R version >= 3.6.2
+
 CHANGES IN baz 0.2-2:
 
  * Changed name of package from mat to baz to avoid CRAN conflict.
