@@ -28,18 +28,13 @@ with
 
     R CMD check baz_*.tar.gz --use-valgrind
 
-[valgrind](http://valgrind.org/) does not complain.  (Actually, by default,
-it complains a lot, but all of the complaints are about C function `wcsrtombs`,
-which is not in our code, not even in the code of R, but in the C standard
-library.  The file [`package/notes`](package/notes)
-shows how to suppress these complaints,
-which are not about our code.)
+[valgrind](http://valgrind.org/) does not complain.
 
 To call some other BLAS or LAPACK routines, first you have to figure out
 which ones.  The main [BLAS web site](http://www.netlib.org/blas/) has a
 quick reference card, but it is in PostScript rather than PDF so you need
 a PostScript viewer to read it.  As I write this, the version of LAPACK
-included in the R sources is 3.6.1.  Check the `NEWS` file in the `doc`
+included in the R sources is 3.10.1.  Check the `NEWS` file in the `doc`
 directory of the R source tarball or at http://cran.r-project.org/src/base/NEWS
 to see where it is now.  Alternatively, `news()` at the R command line
 gets this.  Then read the users guide at
