@@ -5,6 +5,14 @@ about how to call
 [LAPACK](http://en.wikipedia.org/wiki/LAPACK) routines to do numerical linear
 algebra in C code called from [R](http://www.r-project.org).
 
+If you don't use C but rather Fortran, then things are a lot simpler
+because BLAS and Lapack are written in Fortran.  This is illustrated
+for one of the functions in the package (R function `matsmash` can
+call either Fortran or C, the Fortran in the file
+[`footran.f`](package/baz/src/footran.f) is simpler than the alternative,
+which is the C function `matsmash` in the file
+[`i.c`](package/baz/src/i.c)).
+
 The name of the git repo is different from the name of the R package because
 the package used to be called mat and was renamed baz to avoid a conflict
 with CRAN, not that we intend to put the package on CRAN but

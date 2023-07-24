@@ -36,7 +36,7 @@ matsolve <- function(a, b)
         PACKAGE = "baz")$b
 }
 
-matsmash <- function(a, x)
+matsmash <- function(a, x, fortran = FALSE)
 {
     stopifnot(is.numeric(a))
     stopifnot(is.numeric(x))
@@ -45,7 +45,14 @@ matsmash <- function(a, x)
     stopifnot(is.matrix(a))
     stopifnot(a == t(a))
     stopifnot(nrow(a) == length(x))
-    .C("matsmash", a = as.double(a), n = nrow(a), x = as.double(x),
+    stopifnot(is.logical(fortran))
+    stopifnot(length(fortran) == 1)
+    if (fortran) {
+        .Fortran("footran", a = as.double(a), n = nrow(a), x = as.double(x),
+            result = double(1), PACKAGE = "baz")$result
+    } else {
+        .C("matsmash", a = as.double(a), n = nrow(a), x = as.double(x),
         result = double(1), PACKAGE = "baz")$result
+    }
 }
 

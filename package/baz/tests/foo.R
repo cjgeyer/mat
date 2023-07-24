@@ -17,6 +17,8 @@ all.equal(matinv(a), solve(a))
 all.equal(matdet(a), det(a))
 all.equal(matsolve(a, b), cbind(solve(a, b)))
 all.equal(matsmash(a, b), as.vector(rbind(b) %*% solve(a) %*% cbind(b)))
+# matsmash can also be called in Fortran
+all.equal(matsmash(a, b, TRUE), as.vector(rbind(b) %*% solve(a) %*% cbind(b)))
 
 b <- cbind(b, rnorm(p))
 all.equal(matsolve(a, b), solve(a, b))

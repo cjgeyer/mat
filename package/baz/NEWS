@@ -1,4 +1,8 @@
 
+CHANGES IN mat 0.5:
+
+ * added one Fortran example (matsmash)
+
 CHANGES IN baz 0.4:
 
  * Changed C code calling Fortran (Lapack/BLAS) in accordance with
