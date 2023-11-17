@@ -1,6 +1,6 @@
 Package: baz
 Version: 0.5
-Date: 2023-0l7-24
+Date: 2023-07-24
 Title: Demo Calling BLAS or LAPACK from C Called from R
 Author: Charles J. Geyer <charlie@stat.umn.edu>
 Maintainer: Charles J. Geyer <charlie@stat.umn.edu>
