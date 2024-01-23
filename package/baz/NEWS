@@ -1,4 +1,8 @@
 
+CHANGES IN mat 0.6:
+
+ * change author/maintainer e-mail
+
 CHANGES IN mat 0.5:
 
  * added one Fortran example (matsmash)
