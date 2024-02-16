@@ -81,7 +81,7 @@ The final things you need to know if you don't know FORTRAN are
    the fastest) and similarly for higher-dimensional arrays, see
    [Section 5.1 of the book *Introduction to R*](http://cran.us.r-project.org/doc/manuals/r-release/R-intro.html#Arrays).  This means (assuming you keep the matrices in the same storage order that R and FORTRAN have in your C code) you can pass the matrices direct to BLAS or LAPACK code without reordering them.
  * if a FORTRAN subroutine has character arguments (and many LAPACK routines
-   do), then [Section 6.6.1  of the book *Writing R Extensions*](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#fortran-character-strings)
+   do), then [Section 6.6.1  of the book *Writing R Extensions*](http://cran.us.r-project.org/doc/manuals/r-release/R-exts.html#Fortran-character-strings)
    shows how to do that, and this package has been modified accordingly.
    
 Our examples illustrate all of these.
